@@ -11,7 +11,6 @@ const { BotkitCMSHelper } = require('botkit-plugin-cms');
 // Import a platform-specific adapter for slack.
 
 const { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack');
-
 const { MongoDbStorage } = require('botbuilder-storage-mongodb');
 
 // Load process.env values from .env file
@@ -24,11 +23,8 @@ if (process.env.MONGO_URI) {
     });
 }
 
-
-
 const adapter = new SlackAdapter({
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-
 
     // parameters used to secure webhook endpoint
     verificationToken: process.env.verificationToken,
@@ -91,15 +87,9 @@ controller.ready(() => {
     }
 });
 
-
 controller.webserver.get('/', (req, res) => {
     res.send(`This app is running Botkit ${controller.version}.`);
 });
-
-
-
-
-
 
 controller.webserver.get('/install', (req, res) => {
     // getInstallLink points to slack's oauth endpoint and includes clientId and scopes
