@@ -17,9 +17,10 @@ module.exports = function(controller) {
       let [inputChannel, ...rest] = message.text.split(' ').splice(1),
         text = rest.join(' '),
         sayChannel;
-      console.log(channels.length, typeof channels);
-
+      console.log(`searching for ${inputChannel}`);
+      if (inputChannel.startsWith('#')) inputChannel.replace('#','');
       for (const channel of channels) {
+        
         if (channel.name.toUpperCase() === inputChannel.toUpperCase()) {
           sayChannel = channel;
           console.log(
